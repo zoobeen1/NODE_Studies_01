@@ -34,14 +34,30 @@ async function addContact(name, email, phone) {
     const contacts = await listContacts();
     contacts.push(newContact);
     await fs.writeFile(contactsPath, JSON.stringify(contacts));
-    return newContact;
+    return getContactById(id);
   } catch (error) {
     console.log(error);
   }
 }
 
-function removeContact(contactId) {
+async function removeContact(contactId) {
   // ...твой код. Возвращает объект удаленного контакта. Возвращает null, если объект с таким id не найден.
+  try {
+    const contacts = await listContacts();
+    const contact = getContactById(contactId);
+    if (contact) {
+      const filteredContacts = contacts.filter(
+        (contact) => contact.id !== contactId
+      );
+      await fs.writeFile(contactsPath, JSON.stringify(filteredContacts));
+    }
+    return contact;
+  } catch (error) {
+    console.log(error);
+  }
 }
+removeContact("8GFSc5hKcKaZqhiDkXO_K").then((res) => {
+  console.log(res);
+});
 
 export default { listContacts, getContactById, removeContact, addContact };
