@@ -5,7 +5,7 @@ import path from "path";
 const contactsPath = path.join("db", "contacts.json");
 
 // TODO: задокументировать каждую функцию
-async function listContacts() {
+export async function listContacts() {
   // Возвращает массив контактов.
   try {
     return JSON.parse(await fs.readFile(contactsPath));
@@ -14,7 +14,7 @@ async function listContacts() {
   }
 }
 
-async function getContactById(contactId) {
+export async function getContactById(contactId) {
   // Возвращает объект контакта с таким id. Возвращает null, если объект с таким id не найден.
   try {
     const contacts = await listContacts();
@@ -26,7 +26,7 @@ async function getContactById(contactId) {
   }
 }
 
-async function addContact(name, email, phone) {
+export async function addContact(name, email, phone) {
   // ...твой код. Возвращает объект добавленного контакта.
   try {
     const id = nanoid();
@@ -40,7 +40,7 @@ async function addContact(name, email, phone) {
   }
 }
 
-async function removeContact(contactId) {
+export async function removeContact(contactId) {
   // ...твой код. Возвращает объект удаленного контакта. Возвращает null, если объект с таким id не найден.
   try {
     const contacts = await listContacts();
@@ -56,8 +56,5 @@ async function removeContact(contactId) {
     console.log(error);
   }
 }
-removeContact("8GFSc5hKcKaZqhiDkXO_K").then((res) => {
-  console.log(res);
-});
 
-export default { listContacts, getContactById, removeContact, addContact };
+// export default { listContacts, getContactById, removeContact, addContact };
