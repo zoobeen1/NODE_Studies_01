@@ -53,7 +53,7 @@ async function invokeAction({ action, id, name, email, phone }) {
     case "remove":
       try {
         const removedContact = await removeContact(id);
-        console.log(removedContact);
+        console.table(removedContact);
       } catch (error) {
         console.log(error);
       }
