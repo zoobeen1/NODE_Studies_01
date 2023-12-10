@@ -4,7 +4,6 @@ import path from "path";
 
 const contactsPath = path.join("db", "contacts.json");
 
-// TODO: задокументировать каждую функцию
 export async function listContacts() {
   // Возвращает массив контактов.
   try {
@@ -27,7 +26,7 @@ export async function getContactById(contactId) {
 }
 
 export async function addContact(name, email, phone) {
-  // ...твой код. Возвращает объект добавленного контакта.
+  // Возвращает объект добавленного контакта.
   try {
     const id = nanoid();
     const newContact = { id, name, email, phone };
@@ -41,7 +40,7 @@ export async function addContact(name, email, phone) {
 }
 
 export async function removeContact(contactId) {
-  // ...твой код. Возвращает объект удаленного контакта. Возвращает null, если объект с таким id не найден.
+  // Возвращает объект удаленного контакта. Возвращает null, если объект с таким id не найден.
   try {
     const contacts = await listContacts();
     const contact = getContactById(contactId);
@@ -56,5 +55,3 @@ export async function removeContact(contactId) {
     console.log(error);
   }
 }
-
-// export default { listContacts, getContactById, removeContact, addContact };

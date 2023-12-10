@@ -15,6 +15,7 @@
     "nodemon": "^3.0.1"
   },
   "dependencies": {
+    "colors": "^1.4.0",
     "commander": "^11.1.0",
     "nanoid": "^5.0.3",
     "yargs": "^17.7.2"
